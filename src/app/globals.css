@@ -1,0 +1,50 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+/* DiagnosUs iOS design tokens — Figma source: BvtitRNTy7kUjbkLrXsB2h */
+:root {
+  /* Brand — Teal (Earn Mode) */
+  --earn-teal: #4DC3D0;
+  --earn-teal-deep: #00c3d0;
+  --earn-teal-10: rgba(77, 195, 208, 0.10);
+
+  /* Brand — Indigo (App Primary) */
+  --earn-indigo: #6155f5;
+  --earn-indigo-10: #f3f3ff;
+  --earn-indigo-30: #cdc9ff;
+
+  /* Feedback */
+  --earn-red: #FF3B30;
+  --earn-red-10: rgba(255, 59, 48, 0.08);
+
+  /* iOS System Labels */
+  --label-primary: #000000;
+  --label-secondary: rgba(60, 60, 67, 0.60);
+  --label-tertiary: rgba(60, 60, 67, 0.30);
+
+  /* iOS System Fills & Grays */
+  --fill-quaternary: rgba(116, 116, 128, 0.08);
+  --gray-5: #e5e5ea;
+  --gray-6: #f2f2f7;
+
+  /* Backgrounds */
+  --background: #ffffff;
+  --foreground: #000000;
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
