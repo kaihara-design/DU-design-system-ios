@@ -93,6 +93,7 @@ function ComponentBlock({ label, children }: { label: string; children: React.Re
 // ─── NAV ───────────────────────────────────────────────────────────────────
 
 const NAV_ITEMS = [
+  { id: "token-architecture", label: "Token Architecture" },
   { id: "colors", label: "Colors" },
   { id: "typography", label: "Typography" },
   { id: "spacing-radius", label: "Spacing & Radius" },
@@ -167,6 +168,827 @@ export default function DesignSystem() {
             Earn Mode sub-theme included. Reference this doc during any iOS implementation.
           </p>
         </div>
+
+        {/* ── TOKEN ARCHITECTURE ── */}
+        <section id="token-architecture" className="mb-16">
+          <SectionHeader id="token-architecture">Token Architecture</SectionHeader>
+
+          {/* Intro banner */}
+          <div
+            className="rounded-xl p-4 mb-8 text-[13px] leading-relaxed"
+            style={{ background: "var(--earn-indigo-10)", border: "1px solid var(--earn-indigo-30)", color: "var(--earn-indigo)" }}
+          >
+            <p className="font-bold mb-1">3-Tier Architecture — Global → Semantic → Element</p>
+            <p className="font-normal" style={{ color: "var(--label-secondary)" }}>
+              Status: <strong style={{ color: "var(--earn-indigo)" }}>Skeleton</strong> — color values TBD pending review session.
+              Structure and token paths are locked. Values marked <strong>TBD</strong> are placeholders extracted from Figma.
+            </p>
+          </div>
+
+          {/* ── Tier 1: Global ── */}
+          <SubHeader>Tier 1 — Global Tokens</SubHeader>
+          <p className="text-[13px] mb-5" style={{ color: "var(--label-secondary)" }}>
+            Raw primitives. No semantic meaning. All spatial values in <code>pt</code>.
+          </p>
+
+          {/* Global: Neutral palette */}
+          <p className="text-[12px] font-semibold mb-3 uppercase tracking-wide" style={{ color: "var(--label-primary)" }}>Color Palette — Neutral</p>
+          <div className="overflow-x-auto mb-6">
+            <table className="w-full text-[12px] border-collapse">
+              <thead>
+                <tr style={{ borderBottom: "2px solid var(--gray-5)" }}>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Token</th>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Value</th>
+                  <th className="text-left py-2 font-semibold" style={{ color: "var(--label-primary)" }}>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["global.color.neutral.0", "#ffffff", "Pure white"],
+                  ["global.color.neutral.50", "#f2f2f7", "iOS Gray 6 — grouped bg"],
+                  ["global.color.neutral.100", "#e5e5ea", "iOS Gray 5 — borders"],
+                  ["global.color.neutral.200", "#d1d1d6", "iOS Gray 4"],
+                  ["global.color.neutral.800", "rgba(60,60,67,0.60)", "iOS secondary label"],
+                  ["global.color.neutral.850", "rgba(60,60,67,0.30)", "iOS tertiary label"],
+                  ["global.color.neutral.900", "#000000", "Pure black"],
+                  ["global.color.neutral.dark.0", "#000000", "Dark mode root bg"],
+                  ["global.color.neutral.dark.50", "#1c1c1e", "Dark mode card/elevated"],
+                  ["global.color.neutral.dark.100", "#2c2c2e", "Dark mode border"],
+                  ["global.color.neutral.dark.800", "rgba(235,235,245,0.60)", "Dark mode secondary label"],
+                  ["global.color.neutral.dark.850", "rgba(235,235,245,0.30)", "Dark mode tertiary label"],
+                ].map(([token, value, notes]) => (
+                  <tr key={token} style={{ borderBottom: "1px solid var(--gray-5)" }}>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-primary)" }}>{token}</td>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-secondary)" }}>{value}</td>
+                    <td className="py-2" style={{ color: "var(--label-secondary)" }}>{notes}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Global: Brand & Accent palette */}
+          <p className="text-[12px] font-semibold mb-3 uppercase tracking-wide" style={{ color: "var(--label-primary)" }}>Color Palette — Brand & Accent</p>
+          <div className="overflow-x-auto mb-6">
+            <table className="w-full text-[12px] border-collapse">
+              <thead>
+                <tr style={{ borderBottom: "2px solid var(--gray-5)" }}>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Token</th>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Value</th>
+                  <th className="text-left py-2 font-semibold" style={{ color: "var(--label-primary)" }}>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["global.color.brand.teal.400", "#4dc3d0", "TBD — Core/primary (tab active, display accent)"],
+                  ["global.color.brand.teal.500", "#00c3d0", "TBD — UI teal light (accents/teal)"],
+                  ["global.color.brand.teal.500d", "#00d2e0", "TBD — UI teal dark"],
+                  ["global.color.brand.teal.600", "#2a98a4", "TBD — Filter chip active"],
+                  ["global.color.brand.teal.deep", "#006A65", "Earn Mode identity teal"],
+                  ["global.color.brand.teal.deep10", "rgba(56,220,209,0.10)", "Earn teal bg fills"],
+                  ["global.color.brand.teal.container", "#38DCD1", "Reserved — dark mode / special contexts"],
+                  ["global.color.brand.teal.onContainer", "#003D3A", "Text on container fills"],
+                  ["global.color.brand.indigo.400", "#6155f5", "Indigo light"],
+                  ["global.color.brand.indigo.400d", "#6d7cff", "Indigo dark"],
+                  ["global.color.brand.indigo.10", "#f3f3ff", "Indigo tint bg light"],
+                  ["global.color.brand.indigo.10d", "#282652", "Indigo tint bg dark"],
+                  ["global.color.brand.indigo.30", "#cdc9ff", "Indigo tinted border"],
+                  ["global.color.accent.orange", "#ff9500", "iOS system orange — prize pools"],
+                  ["global.color.accent.orangeBg", "rgba(253,210,80,0.15)", "Prize chip bg"],
+                  ["global.color.accent.green", "#34c759", "iOS system green — success"],
+                  ["global.color.accent.greenBg", "#ebf9ee", "Green tint bg light"],
+                  ["global.color.accent.greenBg.d", "#193920", "Green tint bg dark"],
+                  ["global.color.accent.red", "#FF3B30", "iOS system red — error"],
+                  ["global.color.accent.redBg", "rgba(255,59,48,0.08)", "Error tint bg"],
+                  ["global.color.accent.violet", "#BC95E2", "Accent/duBrightViolet"],
+                  ["global.color.accent.purple", "#9938da", "Recommended gradient end"],
+                  ["global.color.contest.consensus", "#0f6771", "Consensus chip text"],
+                  ["global.color.contest.consensusBg", "rgba(42,152,164,0.15)", "Consensus chip bg"],
+                  ["global.color.contest.division", "#5856d6", "Division chip text (iOS indigo)"],
+                  ["global.color.contest.divisionBg", "rgba(88,86,214,0.15)", "Division chip bg"],
+                ].map(([token, value, notes]) => (
+                  <tr key={token} style={{ borderBottom: "1px solid var(--gray-5)" }}>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-primary)" }}>{token}</td>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-secondary)" }}>{value}</td>
+                    <td className="py-2" style={{ color: "var(--label-secondary)" }}>{notes}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Global: Spacing / Radius / Border / Opacity / Typography / Motion */}
+          <div className="grid grid-cols-2 gap-8 mb-8">
+            {/* Spacing Scale */}
+            <div>
+              <p className="text-[12px] font-semibold mb-3 uppercase tracking-wide" style={{ color: "var(--label-primary)" }}>Spacing Scale</p>
+              <table className="w-full text-[12px] border-collapse">
+                <thead>
+                  <tr style={{ borderBottom: "2px solid var(--gray-5)" }}>
+                    <th className="text-left py-1.5 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Token</th>
+                    <th className="text-left py-1.5 font-semibold" style={{ color: "var(--label-primary)" }}>Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    ["global.spacing.4", "4pt"], ["global.spacing.8", "8pt"], ["global.spacing.12", "12pt"],
+                    ["global.spacing.14", "14pt"], ["global.spacing.16", "16pt"], ["global.spacing.20", "20pt"],
+                    ["global.spacing.24", "24pt"], ["global.spacing.32", "32pt"], ["global.spacing.34", "34pt (bottom safe area)"],
+                  ].map(([t, v]) => (
+                    <tr key={t} style={{ borderBottom: "1px solid var(--gray-5)" }}>
+                      <td className="py-1.5 pr-4 font-mono" style={{ color: "var(--label-primary)" }}>{t}</td>
+                      <td className="py-1.5 font-mono" style={{ color: "var(--label-secondary)" }}>{v}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Radius Scale */}
+            <div>
+              <p className="text-[12px] font-semibold mb-3 uppercase tracking-wide" style={{ color: "var(--label-primary)" }}>Radius Scale</p>
+              <table className="w-full text-[12px] border-collapse">
+                <thead>
+                  <tr style={{ borderBottom: "2px solid var(--gray-5)" }}>
+                    <th className="text-left py-1.5 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Token</th>
+                    <th className="text-left py-1.5 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Value</th>
+                    <th className="text-left py-1.5 font-semibold" style={{ color: "var(--label-primary)" }}>Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    ["global.radius.4", "4pt", "Icon tile sm"],
+                    ["global.radius.5", "5pt", "Contest summary card"],
+                    ["global.radius.8", "8pt", "CTA button"],
+                    ["global.radius.10", "10pt", "Input field"],
+                    ["global.radius.12", "12pt", "Standard card"],
+                    ["global.radius.24", "24pt", "Bottom sheet top corners"],
+                    ["global.radius.full", "9999pt", "Pills, circles"],
+                    ["global.radius.continuous.sm", "8pt", "Continuous (squircle) small"],
+                    ["global.radius.continuous.md", "12pt", "Continuous medium"],
+                    ["global.radius.continuous.lg", "24pt", "Continuous large"],
+                  ].map(([t, v, n]) => (
+                    <tr key={t} style={{ borderBottom: "1px solid var(--gray-5)" }}>
+                      <td className="py-1.5 pr-4 font-mono" style={{ color: "var(--label-primary)" }}>{t}</td>
+                      <td className="py-1.5 pr-4 font-mono" style={{ color: "var(--label-secondary)" }}>{v}</td>
+                      <td className="py-1.5" style={{ color: "var(--label-secondary)" }}>{n}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-8 mb-8">
+            {/* Border Width */}
+            <div>
+              <p className="text-[12px] font-semibold mb-3 uppercase tracking-wide" style={{ color: "var(--label-primary)" }}>Border Width</p>
+              <table className="w-full text-[12px] border-collapse">
+                <tbody>
+                  {[
+                    ["global.border.hairline", "0.5pt"],
+                    ["global.border.default", "1pt"],
+                    ["global.border.emphasis", "2pt"],
+                  ].map(([t, v]) => (
+                    <tr key={t} style={{ borderBottom: "1px solid var(--gray-5)" }}>
+                      <td className="py-1.5 pr-4 font-mono" style={{ color: "var(--label-primary)" }}>{t}</td>
+                      <td className="py-1.5 font-mono" style={{ color: "var(--label-secondary)" }}>{v}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Opacity Scale */}
+            <div>
+              <p className="text-[12px] font-semibold mb-3 uppercase tracking-wide" style={{ color: "var(--label-primary)" }}>Opacity Scale</p>
+              <table className="w-full text-[12px] border-collapse">
+                <tbody>
+                  {[
+                    ["global.opacity.08", "0.08"],
+                    ["global.opacity.12", "0.12"],
+                    ["global.opacity.18", "0.18"],
+                    ["global.opacity.20", "0.20"],
+                    ["global.opacity.30", "0.30"],
+                    ["global.opacity.60", "0.60"],
+                    ["global.opacity.100", "1.0"],
+                  ].map(([t, v]) => (
+                    <tr key={t} style={{ borderBottom: "1px solid var(--gray-5)" }}>
+                      <td className="py-1.5 pr-4 font-mono" style={{ color: "var(--label-primary)" }}>{t}</td>
+                      <td className="py-1.5 font-mono" style={{ color: "var(--label-secondary)" }}>{v}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-8 mb-8">
+            {/* Typography tokens */}
+            <div>
+              <p className="text-[12px] font-semibold mb-3 uppercase tracking-wide" style={{ color: "var(--label-primary)" }}>Typography</p>
+              <table className="w-full text-[12px] border-collapse">
+                <tbody>
+                  {[
+                    ["global.font.family.sfPro", "SF Pro"],
+                    ["global.font.family.sfProDisplay", "SF Pro Display"],
+                    ["global.font.weight.regular", "400"],
+                    ["global.font.weight.medium", "500"],
+                    ["global.font.weight.semibold", "590"],
+                    ["global.font.weight.bold", "700"],
+                    ["global.font.size.10", "10pt"],
+                    ["global.font.size.11", "11pt"],
+                    ["global.font.size.12", "12pt"],
+                    ["global.font.size.13", "13pt"],
+                    ["global.font.size.14", "14pt"],
+                    ["global.font.size.15", "15pt"],
+                    ["global.font.size.17", "17pt"],
+                    ["global.font.size.20", "20pt"],
+                    ["global.font.size.22", "22pt"],
+                    ["global.font.size.28", "28pt"],
+                    ["global.font.size.34", "34pt"],
+                  ].map(([t, v]) => (
+                    <tr key={t} style={{ borderBottom: "1px solid var(--gray-5)" }}>
+                      <td className="py-1.5 pr-4 font-mono" style={{ color: "var(--label-primary)" }}>{t}</td>
+                      <td className="py-1.5 font-mono" style={{ color: "var(--label-secondary)" }}>{v}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Motion */}
+            <div>
+              <p className="text-[12px] font-semibold mb-3 uppercase tracking-wide" style={{ color: "var(--label-primary)" }}>Motion</p>
+              <table className="w-full text-[12px] border-collapse">
+                <tbody>
+                  {[
+                    ["global.motion.duration.fast", "200ms"],
+                    ["global.motion.duration.base", "300ms"],
+                    ["global.motion.duration.slow", "500ms"],
+                    ["global.motion.easing.spring", "cubic-bezier(0.22, 1, 0.36, 1)"],
+                    ["global.motion.easing.easeOut", "ease-out"],
+                  ].map(([t, v]) => (
+                    <tr key={t} style={{ borderBottom: "1px solid var(--gray-5)" }}>
+                      <td className="py-1.5 pr-4 font-mono" style={{ color: "var(--label-primary)" }}>{t}</td>
+                      <td className="py-1.5 font-mono" style={{ color: "var(--label-secondary)" }}>{v}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* ── Tier 2: Semantic ── */}
+          <SubHeader>Tier 2 — Semantic Tokens</SubHeader>
+          <p className="text-[13px] mb-5" style={{ color: "var(--label-secondary)" }}>
+            Two parallel sets: <code>semantic-light</code> and <code>semantic-dark</code>. Identical structure; values differ.
+            Values annotated TBD are correct from Figma but subject to color review.
+          </p>
+
+          {/* Color — Text */}
+          <p className="text-[12px] font-semibold mb-3 uppercase tracking-wide" style={{ color: "var(--label-primary)" }}>Color — Text</p>
+          <div className="overflow-x-auto mb-6">
+            <table className="w-full text-[12px] border-collapse">
+              <thead>
+                <tr style={{ borderBottom: "2px solid var(--gray-5)" }}>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Token path</th>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Light value</th>
+                  <th className="text-left py-2 font-semibold" style={{ color: "var(--label-primary)" }}>Dark value</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["color.text.primary", "#000000", "#ffffff"],
+                  ["color.text.secondary", "rgba(60,60,67,0.60)", "rgba(235,235,245,0.60)"],
+                  ["color.text.tertiary", "rgba(60,60,67,0.30)", "rgba(235,235,245,0.30)"],
+                  ["color.text.vibrant", "#333333", "#ffffff"],
+                  ["color.text.vibrantControl", "#404040", "#bfbfbf"],
+                  ["color.text.onColor", "#ffffff", "#ffffff"],
+                  ["color.text.pageTitle", "#3e4546", "TBD"],
+                ].map(([t, light, dark]) => (
+                  <tr key={t} style={{ borderBottom: "1px solid var(--gray-5)" }}>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-primary)" }}>{t}</td>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-secondary)" }}>{light}</td>
+                    <td className="py-2 font-mono" style={{ color: "var(--label-secondary)" }}>{dark}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Color — Surface */}
+          <p className="text-[12px] font-semibold mb-3 uppercase tracking-wide" style={{ color: "var(--label-primary)" }}>Color — Surface</p>
+          <div className="overflow-x-auto mb-6">
+            <table className="w-full text-[12px] border-collapse">
+              <thead>
+                <tr style={{ borderBottom: "2px solid var(--gray-5)" }}>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Token path</th>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Light value</th>
+                  <th className="text-left py-2 font-semibold" style={{ color: "var(--label-primary)" }}>Dark value</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["color.surface.default", "#ffffff", "#000000"],
+                  ["color.surface.grouped", "#f2f2f7", "#000000"],
+                  ["color.surface.elevated", "#ffffff", "#1c1c1e"],
+                  ["color.surface.card", "#ffffff", "#1c1c1e"],
+                  ["color.surface.overlay", "rgba(0,0,0,0.50)", "rgba(0,0,0,0.50)"],
+                ].map(([t, light, dark]) => (
+                  <tr key={t} style={{ borderBottom: "1px solid var(--gray-5)" }}>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-primary)" }}>{t}</td>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-secondary)" }}>{light}</td>
+                    <td className="py-2 font-mono" style={{ color: "var(--label-secondary)" }}>{dark}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Color — Border */}
+          <p className="text-[12px] font-semibold mb-3 uppercase tracking-wide" style={{ color: "var(--label-primary)" }}>Color — Border</p>
+          <div className="overflow-x-auto mb-6">
+            <table className="w-full text-[12px] border-collapse">
+              <thead>
+                <tr style={{ borderBottom: "2px solid var(--gray-5)" }}>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Token path</th>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Light value</th>
+                  <th className="text-left py-2 font-semibold" style={{ color: "var(--label-primary)" }}>Dark value</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["color.border.default", "#e5e5ea", "#2c2c2e"],
+                  ["color.border.separator", "#e5e5ea", "#2c2c2e"],
+                ].map(([t, light, dark]) => (
+                  <tr key={t} style={{ borderBottom: "1px solid var(--gray-5)" }}>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-primary)" }}>{t}</td>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-secondary)" }}>{light}</td>
+                    <td className="py-2 font-mono" style={{ color: "var(--label-secondary)" }}>{dark}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Color — Interactive / Accent */}
+          <p className="text-[12px] font-semibold mb-3 uppercase tracking-wide" style={{ color: "var(--label-primary)" }}>Color — Interactive / Accent</p>
+          <div className="overflow-x-auto mb-6">
+            <table className="w-full text-[12px] border-collapse">
+              <thead>
+                <tr style={{ borderBottom: "2px solid var(--gray-5)" }}>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Token path</th>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Light value</th>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Dark value</th>
+                  <th className="text-left py-2 font-semibold" style={{ color: "var(--label-primary)" }}>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["color.tint.default", "#4dc3d0", "#4dc3d0", "TBD — Core/primary, tab active, display accent"],
+                  ["color.accent.teal", "#00c3d0", "#00d2e0", "TBD — UI teal (non-Earn contexts)"],
+                  ["color.accent.earnTeal", "#006A65", "#006A65", "Earn Mode identity — text/icon"],
+                  ["color.accent.earnTealBg", "rgba(56,220,209,0.10)", "rgba(56,220,209,0.10)", "Earn teal fills"],
+                  ["color.interactive.primaryDefault", "#6155f5", "#6d7cff", "TBD — All primary CTAs"],
+                  ["color.interactive.indigoBg", "#f3f3ff", "#282652", "Indigo tinted bg"],
+                  ["color.interactive.indigoBorder", "#cdc9ff", "#282652", "Indigo tinted border"],
+                ].map(([t, light, dark, notes]) => (
+                  <tr key={t} style={{ borderBottom: "1px solid var(--gray-5)" }}>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-primary)" }}>{t}</td>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-secondary)" }}>{light}</td>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-secondary)" }}>{dark}</td>
+                    <td className="py-2" style={{ color: "var(--label-secondary)" }}>{notes}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Color — Fill */}
+          <p className="text-[12px] font-semibold mb-3 uppercase tracking-wide" style={{ color: "var(--label-primary)" }}>Color — Fill</p>
+          <div className="overflow-x-auto mb-6">
+            <table className="w-full text-[12px] border-collapse">
+              <thead>
+                <tr style={{ borderBottom: "2px solid var(--gray-5)" }}>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Token path</th>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Light value</th>
+                  <th className="text-left py-2 font-semibold" style={{ color: "var(--label-primary)" }}>Dark value</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["color.fill.quaternary", "rgba(116,116,128,0.08)", "rgba(118,118,128,0.18)"],
+                  ["color.fill.vibrantTertiary", "#ededed", "TBD"],
+                ].map(([t, light, dark]) => (
+                  <tr key={t} style={{ borderBottom: "1px solid var(--gray-5)" }}>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-primary)" }}>{t}</td>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-secondary)" }}>{light}</td>
+                    <td className="py-2 font-mono" style={{ color: "var(--label-secondary)" }}>{dark}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Color — Status */}
+          <p className="text-[12px] font-semibold mb-3 uppercase tracking-wide" style={{ color: "var(--label-primary)" }}>Color — Status</p>
+          <div className="overflow-x-auto mb-6">
+            <table className="w-full text-[12px] border-collapse">
+              <thead>
+                <tr style={{ borderBottom: "2px solid var(--gray-5)" }}>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Token path</th>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Light value</th>
+                  <th className="text-left py-2 font-semibold" style={{ color: "var(--label-primary)" }}>Dark value</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["color.status.success", "#34c759", "#34c759"],
+                  ["color.status.successBg", "#ebf9ee", "#193920"],
+                  ["color.status.error", "#FF3B30", "#FF3B30"],
+                  ["color.status.errorBg", "rgba(255,59,48,0.08)", "rgba(255,59,48,0.08)"],
+                  ["color.status.warning", "#ff9500", "#ff9500"],
+                ].map(([t, light, dark]) => (
+                  <tr key={t} style={{ borderBottom: "1px solid var(--gray-5)" }}>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-primary)" }}>{t}</td>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-secondary)" }}>{light}</td>
+                    <td className="py-2 font-mono" style={{ color: "var(--label-secondary)" }}>{dark}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Color — Contest-Specific */}
+          <p className="text-[12px] font-semibold mb-3 uppercase tracking-wide" style={{ color: "var(--label-primary)" }}>Color — Contest-Specific</p>
+          <div className="overflow-x-auto mb-6">
+            <table className="w-full text-[12px] border-collapse">
+              <thead>
+                <tr style={{ borderBottom: "2px solid var(--gray-5)" }}>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Token path</th>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Light value</th>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Dark value</th>
+                  <th className="text-left py-2 font-semibold" style={{ color: "var(--label-primary)" }}>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["color.contest.prize", "#ff9500", "#ff9500", "Prize pool chip text"],
+                  ["color.contest.prizeBg", "rgba(253,210,80,0.15)", "rgba(253,210,80,0.15)", "Prize chip bg"],
+                  ["color.contest.consensus", "#0f6771", "TBD", "Consensus chip text"],
+                  ["color.contest.consensusBg", "rgba(42,152,164,0.15)", "TBD", "Consensus chip bg"],
+                  ["color.contest.division", "#5856d6", "#5856d6", "Division chip text"],
+                  ["color.contest.divisionBg", "rgba(88,86,214,0.15)", "rgba(88,86,214,0.15)", "Division chip bg"],
+                ].map(([t, light, dark, notes]) => (
+                  <tr key={t} style={{ borderBottom: "1px solid var(--gray-5)" }}>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-primary)" }}>{t}</td>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-secondary)" }}>{light}</td>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-secondary)" }}>{dark}</td>
+                    <td className="py-2" style={{ color: "var(--label-secondary)" }}>{notes}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Spacing — Semantic Roles */}
+          <p className="text-[12px] font-semibold mb-3 uppercase tracking-wide" style={{ color: "var(--label-primary)" }}>Spacing — Semantic Roles</p>
+          <div className="overflow-x-auto mb-6">
+            <table className="w-full text-[12px] border-collapse">
+              <thead>
+                <tr style={{ borderBottom: "2px solid var(--gray-5)" }}>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Token path</th>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Value</th>
+                  <th className="text-left py-2 font-semibold" style={{ color: "var(--label-primary)" }}>Usage</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["spacing.layout.horizontal", "16pt", "Screen horizontal padding"],
+                  ["spacing.layout.gap.section", "20pt", "Between sections"],
+                  ["spacing.component.gap.sm", "4pt", "Tight list item gap"],
+                  ["spacing.component.gap.md", "8pt", "Standard list item gap"],
+                  ["spacing.component.gap.lg", "16pt", "Section inner gap"],
+                  ["spacing.component.padding.sm", "12pt", "Compact card padding"],
+                  ["spacing.component.padding.md", "14pt", "CTA button vertical padding"],
+                  ["spacing.component.padding.lg", "16pt", "Featured card padding"],
+                  ["spacing.component.padding.xl", "24pt", "CTA button horizontal padding"],
+                ].map(([t, v, u]) => (
+                  <tr key={t} style={{ borderBottom: "1px solid var(--gray-5)" }}>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-primary)" }}>{t}</td>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-secondary)" }}>{v}</td>
+                    <td className="py-2" style={{ color: "var(--label-secondary)" }}>{u}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Radius — Semantic Roles */}
+          <p className="text-[12px] font-semibold mb-3 uppercase tracking-wide" style={{ color: "var(--label-primary)" }}>Radius — Semantic Roles</p>
+          <div className="overflow-x-auto mb-6">
+            <table className="w-full text-[12px] border-collapse">
+              <thead>
+                <tr style={{ borderBottom: "2px solid var(--gray-5)" }}>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Token path</th>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Value</th>
+                  <th className="text-left py-2 font-semibold" style={{ color: "var(--label-primary)" }}>Usage</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["radius.sm", "5pt", "Contest browse card"],
+                  ["radius.md", "8pt", "CTA button, icon tile"],
+                  ["radius.lg", "12pt", "Standard card, step card"],
+                  ["radius.xl", "24pt", "Bottom sheet top corners"],
+                  ["radius.full", "9999pt", "Pills, chip badges, progress bar, circles"],
+                  ["radius.continuous.md", "12pt", "Prominent surfaces — squircle"],
+                  ["radius.continuous.lg", "24pt", "Sheet/modal — squircle"],
+                ].map(([t, v, u]) => (
+                  <tr key={t} style={{ borderBottom: "1px solid var(--gray-5)" }}>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-primary)" }}>{t}</td>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-secondary)" }}>{v}</td>
+                    <td className="py-2" style={{ color: "var(--label-secondary)" }}>{u}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Typography — Semantic Roles */}
+          <p className="text-[12px] font-semibold mb-3 uppercase tracking-wide" style={{ color: "var(--label-primary)" }}>Typography — Semantic Roles</p>
+          <div className="overflow-x-auto mb-8">
+            <table className="w-full text-[12px] border-collapse">
+              <thead>
+                <tr style={{ borderBottom: "2px solid var(--gray-5)" }}>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Token path</th>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Size</th>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Weight</th>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Line Height</th>
+                  <th className="text-left py-2 font-semibold" style={{ color: "var(--label-primary)" }}>Tracking</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["typography.largeTitle", "34pt", "700", "41", "+0.37"],
+                  ["typography.title1", "28pt", "700", "34", "+0.36"],
+                  ["typography.title2", "22pt", "700", "28", "+0.35"],
+                  ["typography.displayMd", "20pt", "500", "24", "0"],
+                  ["typography.headline", "17pt", "590", "22", "-0.43"],
+                  ["typography.body", "17pt", "400", "22", "-0.43"],
+                  ["typography.bodyEmphasized", "17pt", "590", "22", "-0.43"],
+                  ["typography.subheadline", "15pt", "400", "20", "-0.23"],
+                  ["typography.subheadlineEmphasized", "15pt", "590", "20", "-0.23"],
+                  ["typography.footnote", "13pt", "400", "18", "-0.08"],
+                  ["typography.caption1", "12pt", "400", "16", "0"],
+                  ["typography.caption2", "11pt", "400", "13", "+0.06"],
+                  ["typography.caption2Emphasized", "11pt", "590", "13", "+0.06"],
+                  ["typography.tabLabel", "10pt", "590", "12", "0"],
+                ].map(([t, size, weight, lh, tracking]) => (
+                  <tr key={t} style={{ borderBottom: "1px solid var(--gray-5)" }}>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-primary)" }}>{t}</td>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-secondary)" }}>{size}</td>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-secondary)" }}>{weight}</td>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-secondary)" }}>{lh}</td>
+                    <td className="py-2 font-mono" style={{ color: "var(--label-secondary)" }}>{tracking}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* ── Tier 3: Element ── */}
+          <SubHeader>Tier 3 — Element Tokens</SubHeader>
+          <p className="text-[13px] mb-5" style={{ color: "var(--label-secondary)" }}>
+            Single set. Inherits light/dark from the semantic tier. Path structure: <code>element.component.property.state</code>
+          </p>
+
+          {/* button */}
+          <p className="text-[12px] font-semibold mb-3 uppercase tracking-wide" style={{ color: "var(--label-primary)" }}>button</p>
+          <div className="overflow-x-auto mb-6">
+            <table className="w-full text-[12px] border-collapse">
+              <thead>
+                <tr style={{ borderBottom: "2px solid var(--gray-5)" }}>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Token</th>
+                  <th className="text-left py-2 font-semibold" style={{ color: "var(--label-primary)" }}>Semantic reference</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["button.primary.backgroundColor.default", "color.interactive.primaryDefault"],
+                  ["button.primary.backgroundColor.pressed", "color.interactive.primaryDefault @ opacity.60"],
+                  ["button.primary.backgroundColor.disabled", "color.interactive.primaryDefault @ opacity.30"],
+                  ["button.primary.textColor.default", "color.text.onColor"],
+                  ["button.primary.borderRadius", "radius.md"],
+                  ["button.primary.paddingVertical", "spacing.component.padding.md"],
+                  ["button.primary.paddingHorizontal", "spacing.component.padding.xl"],
+                  ["button.primary.minHeight", "52pt"],
+                  ["button.secondary.borderColor.default", "color.interactive.primaryDefault"],
+                  ["button.secondary.textColor.default", "color.interactive.primaryDefault"],
+                  ["button.secondary.backgroundColor.default", "color.surface.default"],
+                ].map(([t, ref]) => (
+                  <tr key={t} style={{ borderBottom: "1px solid var(--gray-5)" }}>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-primary)" }}>{t}</td>
+                    <td className="py-2 font-mono" style={{ color: "var(--label-secondary)" }}>{ref}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* card */}
+          <p className="text-[12px] font-semibold mb-3 uppercase tracking-wide" style={{ color: "var(--label-primary)" }}>card</p>
+          <div className="overflow-x-auto mb-6">
+            <table className="w-full text-[12px] border-collapse">
+              <thead>
+                <tr style={{ borderBottom: "2px solid var(--gray-5)" }}>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Token</th>
+                  <th className="text-left py-2 font-semibold" style={{ color: "var(--label-primary)" }}>Semantic reference</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["card.default.backgroundColor", "color.surface.card"],
+                  ["card.default.borderColor", "color.border.default"],
+                  ["card.default.borderWidth", "global.border.default"],
+                  ["card.default.borderRadius", "radius.lg"],
+                  ["card.default.paddingVertical", "spacing.component.padding.sm"],
+                  ["card.default.paddingHorizontal", "spacing.component.padding.sm"],
+                  ["card.featured.backgroundColor", "color.accent.earnTealBg (Earn) / color.interactive.indigoBg"],
+                  ["card.featured.borderRadius", "radius.lg"],
+                  ["card.contest.backgroundColor", "color.surface.default"],
+                  ["card.contest.borderRadius", "radius.sm"],
+                  ["card.contest.elevation", "0px 1px 4px rgba(0,0,0,0.25)"],
+                  ["card.contest.recommended.borderColor", "color.surface.default"],
+                  ["card.contest.recommended.elevation", "0px 0px 6px 1px #3499a4 (TBD)"],
+                ].map(([t, ref]) => (
+                  <tr key={t} style={{ borderBottom: "1px solid var(--gray-5)" }}>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-primary)" }}>{t}</td>
+                    <td className="py-2 font-mono" style={{ color: "var(--label-secondary)" }}>{ref}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* chip */}
+          <p className="text-[12px] font-semibold mb-3 uppercase tracking-wide" style={{ color: "var(--label-primary)" }}>chip</p>
+          <div className="overflow-x-auto mb-6">
+            <table className="w-full text-[12px] border-collapse">
+              <thead>
+                <tr style={{ borderBottom: "2px solid var(--gray-5)" }}>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Token</th>
+                  <th className="text-left py-2 font-semibold" style={{ color: "var(--label-primary)" }}>Semantic reference</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["chip.filter.active.backgroundColor", "color.accent.teal (TBD confirm)"],
+                  ["chip.filter.active.textColor", "color.text.onColor"],
+                  ["chip.filter.inactive.backgroundColor", "color.fill.quaternary"],
+                  ["chip.filter.inactive.textColor", "color.text.vibrant"],
+                  ["chip.filter.borderRadius", "radius.md"],
+                  ["chip.mode.earn.backgroundColor", "color.accent.earnTeal"],
+                  ["chip.mode.earn.textColor", "color.text.onColor"],
+                  ["chip.mode.indigo.backgroundColor", "color.interactive.primaryDefault"],
+                  ["chip.mode.indigo.textColor", "color.text.onColor"],
+                  ["chip.prize.backgroundColor", "color.contest.prizeBg"],
+                  ["chip.prize.textColor", "color.contest.prize"],
+                  ["chip.consensus.backgroundColor", "color.contest.consensusBg"],
+                  ["chip.consensus.textColor", "color.contest.consensus"],
+                  ["chip.division.backgroundColor", "color.contest.divisionBg"],
+                  ["chip.division.textColor", "color.contest.division"],
+                  ["chip.status.backgroundColor", "color.interactive.indigoBg"],
+                  ["chip.status.textColor", "color.interactive.primaryDefault"],
+                ].map(([t, ref]) => (
+                  <tr key={t} style={{ borderBottom: "1px solid var(--gray-5)" }}>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-primary)" }}>{t}</td>
+                    <td className="py-2 font-mono" style={{ color: "var(--label-secondary)" }}>{ref}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* navigationBar + tabBar side by side */}
+          <div className="grid grid-cols-2 gap-8 mb-6">
+            <div>
+              <p className="text-[12px] font-semibold mb-3 uppercase tracking-wide" style={{ color: "var(--label-primary)" }}>navigationBar</p>
+              <table className="w-full text-[12px] border-collapse">
+                <tbody>
+                  {[
+                    ["navigationBar.backgroundColor.default", "color.surface.default"],
+                    ["navigationBar.titleColor", "color.text.vibrant"],
+                    ["navigationBar.borderColor", "color.border.separator"],
+                    ["navigationBar.backIconColor", "color.interactive.primaryDefault"],
+                  ].map(([t, ref]) => (
+                    <tr key={t} style={{ borderBottom: "1px solid var(--gray-5)" }}>
+                      <td className="py-1.5 pr-3 font-mono" style={{ color: "var(--label-primary)", fontSize: "11px" }}>{t}</td>
+                      <td className="py-1.5 font-mono" style={{ color: "var(--label-secondary)", fontSize: "11px" }}>{ref}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div>
+              <p className="text-[12px] font-semibold mb-3 uppercase tracking-wide" style={{ color: "var(--label-primary)" }}>tabBar</p>
+              <table className="w-full text-[12px] border-collapse">
+                <tbody>
+                  {[
+                    ["tabBar.backgroundColor", "color.surface.default"],
+                    ["tabBar.iconColor.active", "color.tint.default"],
+                    ["tabBar.iconColor.inactive", "color.text.vibrantControl"],
+                    ["tabBar.labelColor.active", "color.tint.default"],
+                    ["tabBar.labelColor.inactive", "color.text.vibrantControl"],
+                    ["tabBar.selectionBg", "color.fill.vibrantTertiary"],
+                    ["tabBar.blur.default", "blur.regular"],
+                  ].map(([t, ref]) => (
+                    <tr key={t} style={{ borderBottom: "1px solid var(--gray-5)" }}>
+                      <td className="py-1.5 pr-3 font-mono" style={{ color: "var(--label-primary)", fontSize: "11px" }}>{t}</td>
+                      <td className="py-1.5 font-mono" style={{ color: "var(--label-secondary)", fontSize: "11px" }}>{ref}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* sheet + progressBar side by side */}
+          <div className="grid grid-cols-2 gap-8 mb-6">
+            <div>
+              <p className="text-[12px] font-semibold mb-3 uppercase tracking-wide" style={{ color: "var(--label-primary)" }}>sheet</p>
+              <table className="w-full text-[12px] border-collapse">
+                <tbody>
+                  {[
+                    ["sheet.backgroundColor", "color.surface.default"],
+                    ["sheet.borderRadius.top", "radius.xl"],
+                    ["sheet.handle.color", "color.border.separator"],
+                    ["sheet.handle.width", "32pt"],
+                    ["sheet.handle.height", "4pt"],
+                    ["sheet.blur.default", "blur.regular"],
+                  ].map(([t, ref]) => (
+                    <tr key={t} style={{ borderBottom: "1px solid var(--gray-5)" }}>
+                      <td className="py-1.5 pr-3 font-mono" style={{ color: "var(--label-primary)", fontSize: "11px" }}>{t}</td>
+                      <td className="py-1.5 font-mono" style={{ color: "var(--label-secondary)", fontSize: "11px" }}>{ref}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div>
+              <p className="text-[12px] font-semibold mb-3 uppercase tracking-wide" style={{ color: "var(--label-primary)" }}>progressBar</p>
+              <table className="w-full text-[12px] border-collapse">
+                <tbody>
+                  {[
+                    ["progressBar.height", "4pt"],
+                    ["progressBar.borderRadius", "radius.full"],
+                    ["progressBar.trackColor", "color.fill.quaternary"],
+                    ["progressBar.fillColor.earn", "color.accent.teal (TBD — light: #00c7be)"],
+                    ["progressBar.fillColor.indigo", "color.interactive.primaryDefault"],
+                  ].map(([t, ref]) => (
+                    <tr key={t} style={{ borderBottom: "1px solid var(--gray-5)" }}>
+                      <td className="py-1.5 pr-3 font-mono" style={{ color: "var(--label-primary)", fontSize: "11px" }}>{t}</td>
+                      <td className="py-1.5 font-mono" style={{ color: "var(--label-secondary)", fontSize: "11px" }}>{ref}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* iconBubble */}
+          <p className="text-[12px] font-semibold mb-3 uppercase tracking-wide" style={{ color: "var(--label-primary)" }}>iconBubble</p>
+          <div className="overflow-x-auto mb-2">
+            <table className="w-full text-[12px] border-collapse">
+              <thead>
+                <tr style={{ borderBottom: "2px solid var(--gray-5)" }}>
+                  <th className="text-left py-2 pr-4 font-semibold" style={{ color: "var(--label-primary)" }}>Token</th>
+                  <th className="text-left py-2 font-semibold" style={{ color: "var(--label-primary)" }}>Semantic reference</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["iconBubble.sm.size", "24pt"],
+                  ["iconBubble.sm.borderRadius", "radius.full"],
+                  ["iconBubble.sm.backgroundColor.earn", "color.accent.earnTealBg"],
+                  ["iconBubble.sm.iconColor.earn", "color.accent.earnTeal"],
+                  ["iconBubble.md.size", "32pt"],
+                  ["iconBubble.lg.size", "40pt"],
+                  ["iconBubble.hero.size", "64pt"],
+                  ["iconBubble.heroMax.size", "80pt"],
+                  ["iconBubble.heroMax.backgroundColor", "color.accent.earnTeal"],
+                  ["iconBubble.heroMax.iconColor", "color.text.onColor"],
+                ].map(([t, ref]) => (
+                  <tr key={t} style={{ borderBottom: "1px solid var(--gray-5)" }}>
+                    <td className="py-2 pr-4 font-mono" style={{ color: "var(--label-primary)" }}>{t}</td>
+                    <td className="py-2 font-mono" style={{ color: "var(--label-secondary)" }}>{ref}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
 
         {/* ── COLORS ── */}
         <section id="colors" className="mb-16">
