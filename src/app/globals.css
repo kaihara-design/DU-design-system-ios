@@ -11,9 +11,9 @@
 /* DiagnosUs iOS design tokens — Figma source: BvtitRNTy7kUjbkLrXsB2h */
 :root {
   /* Brand — Teal (Earn Mode) */
-  --earn-teal: #4DC3D0;
-  --earn-teal-deep: #00c3d0;
-  --earn-teal-10: rgba(77, 195, 208, 0.10);
+  --earn-teal: #006A65;
+  --earn-teal-deep: #006A65;
+  --earn-teal-10: rgba(56, 220, 209, 0.10);
 
   /* Brand — Indigo (App Primary) */
   --earn-indigo: #6155f5;
